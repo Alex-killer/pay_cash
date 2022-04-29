@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class Transfer extends Model
 {
     use HasFactory;
 
-    public function wallets()
-    {
-        return $this->hasMany(Wallet::class);
-    }
+    protected $guarded = [];
 }

@@ -9,7 +9,7 @@
                     <a class="nav-link" href="{{ route('wallet.index') }}">Кошелек</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Переводы</a>
+                    <a class="nav-link" href="{{ route('transfer.index') }}">Переводы</a>
                 </li>
                 <li class="nav-item">
                     @if (Auth::check())

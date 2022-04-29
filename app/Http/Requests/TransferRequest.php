@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WalletRequest extends FormRequest
+class TransferRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class WalletRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => '',
-            'currency_id' => '',
             'mount' => '',
+            'wallet_id' => '',
         ];
     }
 }
