@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HomeRequest;
+use App\Models\Transfer;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $users = User::all();
-        return view('home', compact('user', 'users'));
+        $transfers = Transfer::where('user_id', $user['id'])->get();
+
+        return view('home', compact('transfers'));
     }
 
     public function update(HomeRequest $request)

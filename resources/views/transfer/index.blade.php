@@ -5,8 +5,8 @@
     <hr>
 
     <div>
-        @foreach($wallets as $wallet)
-            <ul><h2><a href="{{ route('transfer.create', $wallet->id) }}">{{ $wallet->user->name }}</a></h2></ul>
+        @foreach($users as $user)
+            <ul><h2><a href="{{ route('transfer.create', $user->id) }}">{{ $user->name }}</a></h2></ul>
         @endforeach
     </div>
 @endsection

@@ -26,6 +26,7 @@ class TransferRequest extends FormRequest
         return [
             'mount' => '',
             'wallet_id' => '',
+            'userWallet_id' => '',
         ];
     }
 }

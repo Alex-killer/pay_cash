@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 //Route::get('/', 'UserController@index');
 
@@ -27,5 +17,5 @@ Route::get('/wallet/{wallet}/edit', 'WalletController@edit')->name('wallet.edit'
 Route::patch('/wallet/{wallet}', 'WalletController@update')->name('wallet.update');
 
 Route::get('/transfer', 'TransferController@index')->name('transfer.index');
-Route::get('/transfer/{wallet}/create', 'TransferController@create')->name('transfer.create');
+Route::get('/transfer/{user}/create', 'TransferController@create')->name('transfer.create');
 Route::post('/transfer', 'TransferController@store')->name('transfer.store');

@@ -26,4 +26,8 @@
     </div>
 
     <hr>
+
+    <div class="form-group">
+
+    </div>
 @endsection

@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->hasMany(Wallet::class);
     }
 
-    public function transfer()
+    public function transfers()
     {
         return $this->hasMany(Transfer::class);
     }

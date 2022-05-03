@@ -13,22 +13,31 @@ class TransferController extends Controller
 {
     public function index()
     {
-        $wallets = Wallet::all();
-        return view('transfer.index', compact('wallets'));
+        $users = User::all();
+        return view('transfer.index', compact('users'));
     }
 
     public function create(User $user, Wallet $wallet)
     {
-        return view('transfer.create', compact( 'user', 'wallet'));
+        $userWallet = Auth::user();
+        return view('transfer.create', compact( 'user', 'wallet', 'userWallet'));
     }
 
-    public function store(TransferRequest $request, Wallet $wallet)
+    public function store(TransferRequest $request)
     {
-        $input = $request->all();
-        $sum = $input['mount'] + $wallet['mount'];
-        dd($wallet['mount']);
+        $inputWallet = $request->all();
+        $input = $request->only(['mount', 'wallet_id']);
+        $wallet = Wallet::where('id', $input['wallet_id'])->first();
+        $sum['mount'] = $input['mount'] + $wallet['mount'];
         $user = Auth::user();
-        $user->transfer()->create($input);
+        $userWallet = Wallet::where('id', $inputWallet['userWallet_id'])->first();
+        $sumUser['mount'] =  $userWallet['mount'] - $inputWallet['mount'];
+
+
+        $user->transfers()->create($input);
+        $userWallet->update($sumUser);
+        $wallet->update($sum);
+
         return redirect()->route('transfer.index');
     }
 
