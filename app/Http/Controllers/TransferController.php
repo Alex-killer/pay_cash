@@ -51,7 +51,7 @@ class TransferController extends BaseController
             $wallet->update($sum);
 
             return redirect()
-                ->route('transfer.create', $wallet->user->id)
+                ->route('transfer.index')
                 ->with(['success' => 'Успешно Переведено']);
 
         } else {
