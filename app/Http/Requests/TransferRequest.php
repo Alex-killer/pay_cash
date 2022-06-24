@@ -24,9 +24,26 @@ class TransferRequest extends FormRequest
     public function rules()
     {
         return [
-            'mount' => '',
-            'wallet_id' => '',
-            'userWallet_id' => '',
+            'mount' => 'required|numeric|min:1|max:900000',
+            'wallet_id' => 'required',
+            'userWallet_id' => 'required',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'mount.required' => 'Это поле обязательно',
+            'mount.numeric' => 'Вводить можно только число',
+            'mount.min:1' => 'Нельзя вводить меньше 1',
+            'mount.max:900000' => 'Нельзя переводить больше 900000',
+            'wallet_id.required' => 'Это поле обязательно',
+            'userWallet_id.required' => 'Это поле обязательно',
         ];
     }
 }
