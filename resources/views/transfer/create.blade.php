@@ -18,19 +18,6 @@
             </div>
         @endif
 
-        @if(session('success'))
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <div class="alert alert-success" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">x</span>
-                        </button>
-                        {{ session()->get('success') }}
-                    </div>
-                </div>
-            </div>
-        @endif
-
         <form method="POST" action="{{ route('transfer.store') }}">
             @csrf
             <div class="form-group mb-3">

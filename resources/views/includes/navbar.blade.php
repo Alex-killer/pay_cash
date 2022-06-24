@@ -11,11 +11,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('transfer.index') }}">Переводы</a>
                 </li>
+                @if (Auth::check())
                 <li class="nav-item">
-                    @if (Auth::check())
                     <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
-                    @endif
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">
+                        {{ __('Выйти') }}
+                    </a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+{{--                    <form action="{{ route('logout') }}" method="POST">--}}
+{{--                        @csrf--}}
+{{--                        <input class="btn btn-light" type="submit" value="Выйти">--}}
+{{--                    </form>--}}
+                </li>
+                @endif
             </ul>
         </div>
     </div>
