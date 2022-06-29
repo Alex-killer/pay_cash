@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+
+    @if($errors->any())
+        @include('alerts.error')
+    @endif
+
 <form method="POST" action="{{ route('wallet.update', $wallet->id) }}">
     @csrf
     @method('PATCH')

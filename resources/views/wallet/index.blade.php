@@ -1,6 +1,13 @@
 @extends('layouts.master')
 @section('content')
     <h1>Здесь хранятся ваши кошельки</h1>
+
+    @if(session('success'))
+        @include('alerts.success')
+    @endif
+
+    <hr>
+
     <a class="btn btn-primary" href="{{ route('wallet.create') }}" role="button">Создать</a>
 
     <div class="form-group mt-3">

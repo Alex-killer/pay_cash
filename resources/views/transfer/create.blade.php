@@ -6,16 +6,7 @@
 
     <div class="form-group">
         @if($errors->any())
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <div class="alert alert-danger" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">x</span>
-                        </button>
-                        {{ $errors->first() }}
-                    </div>
-                </div>
-            </div>
+            @include('alerts.error')
         @endif
 
         <form method="POST" action="{{ route('transfer.store') }}">
@@ -50,9 +41,9 @@
                        placeholder="Введите сумму"
                        aria-describedby="button-addon2"
                        required>
-                @error('mount')
-                <p class="text-danger">{{ $message }}</p>
-                @enderror
+{{--                @error('mount')--}}
+{{--                <p class="text-danger">{{ $message }}</p>--}}
+{{--                @enderror--}}
             </div>
             <button type="submit" class="btn btn-primary">Перевести</button>
         </form>

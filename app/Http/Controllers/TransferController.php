@@ -6,6 +6,7 @@ use App\Http\Requests\TransferRequest;
 use App\Models\Currency;
 use App\Models\User;
 use App\Models\Wallet;
+use App\Services\TransferService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class TransferController extends BaseController
         return view('transfer.create', compact( 'user', 'wallet', 'userWallet'));
     }
 
-    public function store(TransferRequest $request)
+    public function store(TransferRequest $request, TransferService $service)
     {
         $inputWallet = $request->all();
         $input = $request->only(['mount', 'wallet_id']);
@@ -34,7 +35,7 @@ class TransferController extends BaseController
 
         if ($inputWallet['mount'] < $userWallet['mount']) {
 
-            $this->service->update($userWallet, $wallet, $input, $inputWallet, $currencyTransfer, $currencies);
+            $service->update($userWallet, $wallet, $input, $inputWallet, $currencyTransfer, $currencies);
 
             return redirect()
                 ->route('transfer.index')

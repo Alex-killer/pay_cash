@@ -35,15 +35,15 @@ class TransferRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
-    {
-        return [
-            'mount.required' => 'Это поле обязательно',
-            'mount.numeric' => 'Вводить можно только число',
-            'mount.min:1' => 'Нельзя вводить меньше 1',
-            'mount.max:900000' => 'Нельзя переводить больше 900000',
-            'wallet_id.required' => 'Это поле обязательно',
-            'userWallet_id.required' => 'Это поле обязательно',
-        ];
-    }
+//    public function messages()
+//    {
+//        return [
+//            'mount.required' => 'Это поле обязательно',
+//            'mount.numeric' => 'Вводить можно только число',
+//            'mount.min:1' => 'Нельзя вводить меньше 1',
+//            'mount.max:900000' => 'Нельзя переводить больше 900000',
+//            'wallet_id.required' => 'Это поле обязательно',
+//            'userWallet_id.required' => 'Это поле обязательно',
+//        ];
+//    }
 }

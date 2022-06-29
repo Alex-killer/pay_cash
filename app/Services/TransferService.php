@@ -13,7 +13,7 @@ class TransferService
         if ($userWallet->currency_id == $wallet->currency_id){
             $sum['mount'] = $input['mount'] + $wallet['mount'];
             $sumUser['mount'] =  $userWallet['mount'] - $inputWallet['mount'];
-        } else  {
+        } else {
             $sum['mount'] = ($currencyTransfer / $currencies) * $input['mount'] + $wallet['mount'];
             $sumUser['mount'] =  $userWallet['mount'] - $inputWallet['mount'];
         }

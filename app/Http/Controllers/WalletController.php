@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Wallet\StoreRequest;
+use App\Http\Requests\Wallet\UpdateRequest;
 use App\Http\Requests\WalletRequest;
 use App\Models\Currency;
 use App\Models\User;
@@ -25,7 +27,7 @@ class WalletController extends Controller
         return view('wallet.create', compact('currencies'));
     }
 
-    public function store(WalletRequest $request)
+    public function store(StoreRequest $request)
     {
         $input = $request->all();
         $user = Auth::user();
@@ -38,12 +40,22 @@ class WalletController extends Controller
         return view('wallet.edit', compact('wallet'));
     }
 
-    public function update(WalletRequest $request, Wallet $wallet)
+    public function update(UpdateRequest $request, Wallet $wallet)
     {
         $input = $request->all();
-        $sum['mount'] = $input['mount'] + $wallet['mount'];
+        $user = Auth::user();
+        if ($user == $wallet->user) {
+            $sum['mount'] = $input['mount'] + $wallet['mount'];
 
-        $wallet->update($sum);
-        return redirect()->back();
+            $wallet->update($sum);
+            return redirect()
+                ->route('wallet.index')
+                ->with(['success' => 'Ваш счет успешно пополнен']);
+
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Вы не можете пополнять чужой кошелек'])
+                ->withInput();
+        }
     }
 }

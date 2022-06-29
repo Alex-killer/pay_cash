@@ -18,7 +18,7 @@ class CreateWalletsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->unsignedBigInteger('currency_id')->default(1);
-            $table->float('mount')->nullable();
+            $table->float('mount')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
